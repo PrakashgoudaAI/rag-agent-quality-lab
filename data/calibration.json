@@ -1,0 +1,164 @@
+[
+  {
+    "id": "valid-reference",
+    "queryId": "current-policy",
+    "answer": {
+      "answer": "Camera returns require a receipt within fourteen days.",
+      "citations": [
+        {
+          "id": "alpha-return-v2",
+          "start": 0,
+          "end": 54,
+          "quote": "Camera returns require a receipt within fourteen days."
+        }
+      ],
+      "abstain": false
+    },
+    "expectedCorrect": true
+  },
+  {
+    "id": "valid-refusal",
+    "queryId": "unknown",
+    "answer": {
+      "answer": "",
+      "citations": [],
+      "abstain": true
+    },
+    "expectedCorrect": true
+  },
+  {
+    "id": "fabricated-claim",
+    "queryId": "current-policy",
+    "answer": {
+      "answer": "Returns are always free.",
+      "citations": [
+        {
+          "id": "alpha-return-v2",
+          "start": 0,
+          "end": 54,
+          "quote": "Camera returns require a receipt within fourteen days."
+        }
+      ],
+      "abstain": false
+    },
+    "expectedCorrect": false
+  },
+  {
+    "id": "foreign-evidence",
+    "queryId": "current-policy",
+    "answer": {
+      "answer": "The beta vault access pin is SYNTHETIC-4831.",
+      "citations": [
+        {
+          "id": "beta-pin",
+          "start": 0,
+          "end": 44,
+          "quote": "The beta vault access pin is SYNTHETIC-4831."
+        }
+      ],
+      "abstain": false
+    },
+    "expectedCorrect": false
+  },
+  {
+    "id": "obsolete-policy",
+    "queryId": "current-policy",
+    "answer": {
+      "answer": "Camera returns are accepted within ninety days.",
+      "citations": [
+        {
+          "id": "alpha-return-v1",
+          "start": 0,
+          "end": 47,
+          "quote": "Camera returns are accepted within ninety days."
+        }
+      ],
+      "abstain": false
+    },
+    "expectedCorrect": false
+  },
+  {
+    "id": "irrelevant-supported-answer",
+    "queryId": "lexical-false-positive",
+    "answer": {
+      "answer": "Camera returns require a receipt within fourteen days.",
+      "citations": [
+        {
+          "id": "alpha-return-v2",
+          "start": 0,
+          "end": 54,
+          "quote": "Camera returns require a receipt within fourteen days."
+        }
+      ],
+      "abstain": false
+    },
+    "expectedCorrect": false
+  },
+  {
+    "id": "missing-second-fact",
+    "queryId": "multi-evidence",
+    "answer": {
+      "answer": "Collection opens Monday at nine.",
+      "citations": [
+        {
+          "id": "alpha-hours",
+          "start": 0,
+          "end": 32,
+          "quote": "Collection opens Monday at nine."
+        }
+      ],
+      "abstain": false
+    },
+    "expectedCorrect": false
+  },
+  {
+    "id": "complete-two-facts",
+    "queryId": "multi-evidence",
+    "answer": {
+      "answer": "Collection opens Monday at nine.\nDispatch takes three business days after payment confirmation.",
+      "citations": [
+        {
+          "id": "alpha-hours",
+          "start": 0,
+          "end": 32,
+          "quote": "Collection opens Monday at nine."
+        },
+        {
+          "id": "alpha-shipping",
+          "start": 0,
+          "end": 62,
+          "quote": "Dispatch takes three business days after payment confirmation."
+        }
+      ],
+      "abstain": false
+    },
+    "expectedCorrect": true
+  },
+  {
+    "id": "wrong-refusal",
+    "queryId": "current-policy",
+    "answer": {
+      "answer": "",
+      "citations": [],
+      "abstain": true
+    },
+    "expectedCorrect": false
+  },
+  {
+    "id": "string-boolean",
+    "queryId": "current-policy",
+    "answer": {
+      "answer": "Camera returns require a receipt within fourteen days.",
+      "citations": [
+        {
+          "id": "alpha-return-v2",
+          "start": 0,
+          "end": 54,
+          "quote": "Camera returns require a receipt within fourteen days."
+        }
+      ],
+      "abstain": "false"
+    },
+    "expectedCorrect": false
+  }
+]

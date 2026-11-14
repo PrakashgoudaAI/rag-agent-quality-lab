@@ -22,5 +22,35 @@
     "tenant": "alpha",
     "current": true,
     "text": "Collection opens Monday at nine."
+  },
+  {
+    "id": "alpha-warranty",
+    "tenant": "alpha",
+    "current": true,
+    "text": "Battery warranty covers manufacturing defects for twelve months."
+  },
+  {
+    "id": "alpha-shipping",
+    "tenant": "alpha",
+    "current": true,
+    "text": "Dispatch takes three business days after payment confirmation."
+  },
+  {
+    "id": "beta-hours",
+    "tenant": "beta",
+    "current": true,
+    "text": "Collection opens Tuesday at ten."
+  },
+  {
+    "id": "beta-return",
+    "tenant": "beta",
+    "current": true,
+    "text": "Lens returns require a receipt within seven days."
+  },
+  {
+    "id": "alpha-shipping-old",
+    "tenant": "alpha",
+    "current": false,
+    "text": "Dispatch takes twenty business days."
   }
 ]
