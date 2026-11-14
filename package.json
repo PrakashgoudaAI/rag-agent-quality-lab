@@ -4,12 +4,14 @@
   "description": "Synthetic retrieval evidence and bounded MCP tool execution checks.",
   "scripts": {
     "check": "tsc --noEmit",
-    "test": "node --test tests/*.test.ts",
+    "test": "node --test --test-timeout=10000 tests/*.test.ts",
     "evaluate": "node src/evaluate.ts",
     "verify": "npm run check && npm run lint && npm run format:check && npm test && npm run evaluate",
     "lint": "eslint .",
     "format": "prettier --write src tests data tsconfig.json eslint.config.mjs",
-    "format:check": "prettier --check src tests data tsconfig.json eslint.config.mjs"
+    "format:check": "prettier --check src tests data tsconfig.json eslint.config.mjs",
+    "evaluate:quality": "node src/evaluate.ts --strict",
+    "evaluate:model": "node src/evaluate-model.ts"
   },
   "keywords": [],
   "license": "MIT",
