@@ -109,3 +109,156 @@ await test("step budget, pre-cancellation and unknown tools prevent extra effect
     await s.close();
   }
 });
+
+await test(
+  "in-flight MCP cancellation before commit prevents this write and later actions",
+  { timeout: 5000 },
+  async () => {
+    const started = Promise.withResolvers<void>();
+    const cancelled = Promise.withResolvers<void>();
+    const release = Promise.withResolvers<void>();
+    const exited = Promise.withResolvers<void>();
+    const controller = new AbortController();
+    const s = await toolSession(
+      { tenant: "alpha", role: "editor", approved: true },
+      {
+        beforeCommit: async (signal) => {
+          signal.addEventListener("abort", () => cancelled.resolve(), {
+            once: true,
+          });
+          started.resolve();
+          await release.promise;
+          try {
+            signal.throwIfAborted();
+          } finally {
+            exited.resolve();
+          }
+        },
+      },
+    );
+    try {
+      const pending = runActions(
+        s.client,
+        [
+          action,
+          {
+            ...action,
+            arguments: { title: "Later", requestKey: "review-002" },
+          },
+        ],
+        { maxSteps: 2, timeoutMs: 2000, signal: controller.signal },
+      );
+      const rejected = assert.rejects(pending);
+      await started.promise;
+      controller.abort();
+      await rejected;
+      await cancelled.promise;
+      release.resolve();
+      await exited.promise;
+      assert.equal(s.notes.size, 0);
+    } finally {
+      release.resolve();
+      await s.close();
+    }
+  },
+);
+await test(
+  "MCP deadline reaches an in-flight handler before any write",
+  { timeout: 5000 },
+  async () => {
+    const started = Promise.withResolvers<void>();
+    const cancelled = Promise.withResolvers<void>();
+    const release = Promise.withResolvers<void>();
+    const exited = Promise.withResolvers<void>();
+    const s = await toolSession(
+      { tenant: "alpha", role: "editor", approved: true },
+      {
+        beforeCommit: async (signal) => {
+          signal.addEventListener("abort", () => cancelled.resolve(), {
+            once: true,
+          });
+          started.resolve();
+          await release.promise;
+          try {
+            signal.throwIfAborted();
+          } finally {
+            exited.resolve();
+          }
+        },
+      },
+    );
+    try {
+      const pending = runActions(s.client, [action], {
+        maxSteps: 1,
+        timeoutMs: 150,
+      });
+      const rejected = assert.rejects(pending);
+      await started.promise;
+      await rejected;
+      await cancelled.promise;
+      release.resolve();
+      await exited.promise;
+      assert.equal(s.notes.size, 0);
+    } finally {
+      release.resolve();
+      await s.close();
+    }
+  },
+);
+await test(
+  "cancellation after commit leaves one effect that can be reconciled by its request key",
+  { timeout: 5000 },
+  async () => {
+    const committed = Promise.withResolvers<void>();
+    const cancelled = Promise.withResolvers<void>();
+    const release = Promise.withResolvers<void>();
+    const controller = new AbortController();
+    let pause = true;
+    const s = await toolSession(
+      { tenant: "alpha", role: "editor", approved: true },
+      {
+        afterCommit: async (signal) => {
+          if (!pause) return;
+          signal.addEventListener("abort", () => cancelled.resolve(), {
+            once: true,
+          });
+          committed.resolve();
+          await release.promise;
+        },
+      },
+    );
+    try {
+      const pending = runActions(
+        s.client,
+        [
+          action,
+          {
+            ...action,
+            arguments: { title: "Later", requestKey: "review-002" },
+          },
+        ],
+        { maxSteps: 2, timeoutMs: 2000, signal: controller.signal },
+      );
+      const rejected = assert.rejects(pending);
+      await committed.promise;
+      assert.equal(s.notes.size, 1);
+      controller.abort();
+      await rejected;
+      await cancelled.promise;
+      pause = false;
+      release.resolve();
+      const replay = await s.client.callTool(action);
+      assert.equal(replay.isError, undefined);
+      assert.equal(s.notes.size, 1);
+      const changed = await s.client.callTool({
+        ...action,
+        arguments: { ...action.arguments, title: "Changed after uncertainty" },
+      });
+      assert.equal(changed.isError, true);
+      assert.equal(s.notes.size, 1);
+    } finally {
+      release.resolve();
+      await s.close();
+    }
+  },
+);
