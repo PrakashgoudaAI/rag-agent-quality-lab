@@ -1,0 +1,842 @@
+{
+  "model": "qwen3:4b",
+  "modelDigest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+  "environment": {
+    "node": "v24.4.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M4 Pro",
+    "logicalCpus": 12,
+    "memoryBytes": 25769803776
+  },
+  "settings": {
+    "temperature": 0,
+    "think": false,
+    "numPredict": 512,
+    "numCtx": 4096,
+    "requestTimeoutMs": 10000,
+    "runTimeoutMs": 120000
+  },
+  "requests": 23,
+  "promptVersion": "canonical-extract-v2",
+  "schemaVersion": 2,
+  "evaluatorVersion": "whole-paragraph-v1",
+  "corpusHash": "a7da70f787cab112f679dd3835cc71ffd97a58ae69077ac390a377c324a6bb99",
+  "datasetHash": "dcef9f8edba00893e64975600a8d6292380e29a10c07daf5d117d65362df64f6",
+  "regressionPassed": false,
+  "qualityPassed": false,
+  "suites": {
+    "regression": {
+      "cases": 18,
+      "correct": 9,
+      "passed": false,
+      "recallAt2": 1,
+      "precisionAt2": 0.9444444444444444
+    },
+    "challenge": {
+      "cases": 5,
+      "correct": 3,
+      "passed": false,
+      "recallAt2": 0.6666666666666666,
+      "precisionAt2": 0.5
+    }
+  },
+  "rows": [
+    {
+      "id": "current-policy",
+      "suite": "regression",
+      "category": "current-version",
+      "retrieved": [
+        "alpha-return-v2",
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 0.5,
+      "latencyMs": 1399.018667
+    },
+    {
+      "id": "hours",
+      "suite": "regression",
+      "category": "lookup",
+      "retrieved": [
+        "alpha-hours"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 318.218666
+    },
+    {
+      "id": "unknown",
+      "suite": "regression",
+      "category": "unanswerable",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 293.9660000000001
+    },
+    {
+      "id": "foreign-secret",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 287.243375
+    },
+    {
+      "id": "stale-only-term",
+      "suite": "regression",
+      "category": "current-version",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 293.4724580000002
+    },
+    {
+      "id": "warranty",
+      "suite": "regression",
+      "category": "lookup",
+      "retrieved": [
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 425.83950000000004
+    },
+    {
+      "id": "dispatch",
+      "suite": "regression",
+      "category": "lookup",
+      "retrieved": [
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 422.2156249999998
+    },
+    {
+      "id": "beta-hours",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [
+        "beta-hours"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 354.37716599999976
+    },
+    {
+      "id": "beta-return",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [
+        "beta-return"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 420.8095419999995
+    },
+    {
+      "id": "own-secret",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [
+        "beta-pin"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 423.16995899999984
+    },
+    {
+      "id": "foreign-warranty",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 288.6293749999995
+    },
+    {
+      "id": "foreign-time",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 318.92783299999974
+    },
+    {
+      "id": "unknown-tenant",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 321.1870829999998
+    },
+    {
+      "id": "old-shipping",
+      "suite": "regression",
+      "category": "current-version",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 291.418584
+    },
+    {
+      "id": "case-punctuation",
+      "suite": "regression",
+      "category": "normalization",
+      "retrieved": [
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 425.4393749999999
+    },
+    {
+      "id": "empty-terms",
+      "suite": "regression",
+      "category": "unanswerable",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 287.37425000000076
+    },
+    {
+      "id": "whitespace",
+      "suite": "regression",
+      "category": "normalization",
+      "retrieved": [
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 422.040833
+    },
+    {
+      "id": "unknown-policy",
+      "suite": "regression",
+      "category": "unanswerable",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 313.23179100000016
+    },
+    {
+      "id": "lexical-false-positive",
+      "suite": "challenge",
+      "category": "irrelevant-overlap",
+      "retrieved": [
+        "alpha-return-v2"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 421.8463750000001
+    },
+    {
+      "id": "unsupported-detail",
+      "suite": "challenge",
+      "category": "irrelevant-overlap",
+      "retrieved": [
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 423.27341700000034
+    },
+    {
+      "id": "multi-evidence",
+      "suite": "challenge",
+      "category": "evidence-coverage",
+      "retrieved": [
+        "alpha-shipping",
+        "alpha-hours"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 425.5500830000001
+    },
+    {
+      "id": "paraphrase",
+      "suite": "challenge",
+      "category": "semantic-retrieval",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 0,
+      "precisionAt2": null,
+      "latencyMs": 316.5809590000008
+    },
+    {
+      "id": "prompt-injection",
+      "suite": "challenge",
+      "category": "instruction-boundary",
+      "retrieved": [
+        "alpha-return-v2"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 430.869917
+    }
+  ],
+  "observations": [
+    {
+      "id": "current-policy",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 1399.018667,
+      "responseBytes": 390,
+      "requestHash": "325de253ef559d3b89e3a093a926bb44e65dbf2af8f27b5a64da81ebd7e3de05",
+      "promptTokens": 349,
+      "completionTokens": 22
+    },
+    {
+      "id": "hours",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 318.218666,
+      "responseBytes": 375,
+      "requestHash": "9a822f83655de964d25d956d4156da874c31d497b0932261c0c01d51ccfc6f40",
+      "promptTokens": 321,
+      "completionTokens": 17
+    },
+    {
+      "id": "unknown",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 293.9660000000001,
+      "responseBytes": 375,
+      "requestHash": "17b931692d4ecea02414b951491acfb37f6c2ae7464a1e99831520b59fcdf601",
+      "promptTokens": 304,
+      "completionTokens": 17
+    },
+    {
+      "id": "foreign-secret",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 287.243375,
+      "responseBytes": 375,
+      "requestHash": "e7827c259ddc85fa04e0721f3d32eaed6bdd54fa0ecd74dcd9cec7eaeded442a",
+      "promptTokens": 304,
+      "completionTokens": 17
+    },
+    {
+      "id": "stale-only-term",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 293.4724580000002,
+      "responseBytes": 375,
+      "requestHash": "08041ab97bee10dcc33c83e62d74ed4253bbdbe0fbabf3a75764e77af635c192",
+      "promptTokens": 302,
+      "completionTokens": 17
+    },
+    {
+      "id": "warranty",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 425.83950000000004,
+      "responseBytes": 388,
+      "requestHash": "9bef8eb381dc9cac8a9c5f114f95e4cfd0ed0ffdb2502cf5c379db29f3375879",
+      "promptTokens": 326,
+      "completionTokens": 22
+    },
+    {
+      "id": "dispatch",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 422.2156249999998,
+      "responseBytes": 388,
+      "requestHash": "ecb7eec6b464eca41e7a97845da12d82fa8d8666a14c7584c3cd5aa688656ba2",
+      "promptTokens": 325,
+      "completionTokens": 22
+    },
+    {
+      "id": "beta-hours",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 354.37716599999976,
+      "responseBytes": 376,
+      "requestHash": "efa090fce0aa96d841413523c14e4cda5fdf9227f2bc35f01a8a257c351336e1",
+      "promptTokens": 321,
+      "completionTokens": 17
+    },
+    {
+      "id": "beta-return",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 420.8095419999995,
+      "responseBytes": 388,
+      "requestHash": "ef27d43de9066769e3e1c929319a0d587644ab4f9525562ae8877ecdcc291544",
+      "promptTokens": 325,
+      "completionTokens": 22
+    },
+    {
+      "id": "own-secret",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 423.16995899999984,
+      "responseBytes": 388,
+      "requestHash": "8b96ff703797ef4c8ccc2a42a39b5817884e6b6dabdfc0078beaa541cc868f5b",
+      "promptTokens": 331,
+      "completionTokens": 22
+    },
+    {
+      "id": "foreign-warranty",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 288.6293749999995,
+      "responseBytes": 375,
+      "requestHash": "e7a705e29578b29cb03818f8a4c56491be194d989074981c3a0ad3343a7c29c8",
+      "promptTokens": 304,
+      "completionTokens": 17
+    },
+    {
+      "id": "foreign-time",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 318.92783299999974,
+      "responseBytes": 375,
+      "requestHash": "5ec4dd3202c716d07d91884a29d39cc110267ef50a4f9c723a4ae566afff682f",
+      "promptTokens": 302,
+      "completionTokens": 17
+    },
+    {
+      "id": "unknown-tenant",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 321.1870829999998,
+      "responseBytes": 375,
+      "requestHash": "33cb37ac59f7d7a1fc8ae7c828644cdd85b2d97f68a3bf989f047f995d4cd38c",
+      "promptTokens": 303,
+      "completionTokens": 17
+    },
+    {
+      "id": "old-shipping",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 291.418584,
+      "responseBytes": 375,
+      "requestHash": "e6eef2e9b90f5c92f1686bafa585fe2624f70a03c2b1e88fb4f26e5bc8ad0132",
+      "promptTokens": 301,
+      "completionTokens": 17
+    },
+    {
+      "id": "case-punctuation",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 425.4393749999999,
+      "responseBytes": 388,
+      "requestHash": "4844ada7dee51db9ae575d90cdec85d0148e9dd11b65fe0d3ed1ec776357cd68",
+      "promptTokens": 330,
+      "completionTokens": 22
+    },
+    {
+      "id": "empty-terms",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 287.37425000000076,
+      "responseBytes": 375,
+      "requestHash": "9ca3d89665fcbf6b071b2d2bd965e890d903f01e28f020f8c8a38b4e8f3ac93b",
+      "promptTokens": 301,
+      "completionTokens": 17
+    },
+    {
+      "id": "whitespace",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 422.040833,
+      "responseBytes": 388,
+      "requestHash": "b9ce2bcef7ca34832fd15d91710474a427fb088fccd4d9665bdb0f49b1c3331c",
+      "promptTokens": 327,
+      "completionTokens": 22
+    },
+    {
+      "id": "unknown-policy",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 313.23179100000016,
+      "responseBytes": 375,
+      "requestHash": "82cc6d6d3e2181a1db5b6de9f18ba2ac0c3f99aa9539c865b8e6fd3a2aa7cc44",
+      "promptTokens": 305,
+      "completionTokens": 17
+    },
+    {
+      "id": "lexical-false-positive",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 421.8463750000001,
+      "responseBytes": 388,
+      "requestHash": "12fe2ed282fc7c4d6c0c78b6783a34aa3c16b144d5a7a300cea704e407d5637b",
+      "promptTokens": 326,
+      "completionTokens": 22
+    },
+    {
+      "id": "unsupported-detail",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 423.27341700000034,
+      "responseBytes": 388,
+      "requestHash": "9e267fb9dc56b020349c863b66a29dc61304a1456be67caba2969d0753db765b",
+      "promptTokens": 326,
+      "completionTokens": 22
+    },
+    {
+      "id": "multi-evidence",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 425.5500830000001,
+      "responseBytes": 387,
+      "requestHash": "cbe0dc7fa55634e18390a2fe93078d8f066993eb692e54fde0dba1efd5bc51e6",
+      "promptTokens": 346,
+      "completionTokens": 22
+    },
+    {
+      "id": "paraphrase",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 316.5809590000008,
+      "responseBytes": 375,
+      "requestHash": "126e7f673725189ec03896793273ba5ec48879f2c4bdf921f930b232dc10db7e",
+      "promptTokens": 308,
+      "completionTokens": 17
+    },
+    {
+      "id": "prompt-injection",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 430.869917,
+      "responseBytes": 388,
+      "requestHash": "7031032c53d59a42ae5ad6aeafe9cca5486f7d42180b8efd8ae372ddd592b3d5",
+      "promptTokens": 335,
+      "completionTokens": 22
+    }
+  ],
+  "experiment": {
+    "date": "2026-11-14",
+    "serverVersion": "0.40.5",
+    "cloudDisabled": true,
+    "modelDownload": false,
+    "note": "Explicit tenant identity supplied. Follow-up after inspecting the initial prompt; not held out or an independent estimate."
+  }
+}

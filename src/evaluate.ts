@@ -1,57 +1,69 @@
-import { readFile, mkdir, writeFile } from "node:fs/promises";
-import {
-  retrieve,
-  extract,
-  supported,
-  fingerprint,
-  type Document,
-} from "./retrieval.ts";
-const corpus = JSON.parse(
-  await readFile(new URL("../data/corpus.json", import.meta.url), "utf8"),
-) as Document[];
-const queries = JSON.parse(
-  await readFile(new URL("../data/queries.json", import.meta.url), "utf8"),
-) as {
-  id: string;
-  tenant: string;
-  question: string;
-  relevant: string[];
-  answerId: string | null;
-}[];
+import { calibrate } from "./calibration.ts";
+import { mkdir, writeFile } from "node:fs/promises";
+import { loadDataset } from "./dataset.ts";
+import { retrieve, extract } from "./retrieval.ts";
+import { scoreAnswer, summarize } from "./evaluation.ts";
+const { corpus, queries } = await loadDataset();
 const rows = queries.map((q) => {
   const start = performance.now();
   const hits = retrieve(corpus, q.tenant, q.question);
   const answer = extract(corpus, q.tenant, hits);
   return {
     id: q.id,
+    suite: q.suite,
+    category: q.category,
     retrieved: hits.map((d) => d.id),
-    recallAt2: q.relevant.length
-      ? q.relevant.filter((id) => hits.some((d) => d.id === id)).length /
-        q.relevant.length
-      : null,
-    correct: q.answerId
-      ? answer.citations[0]?.id === q.answerId
-      : answer.abstain,
-    supported: supported(corpus, q.tenant, answer),
+    ...scoreAnswer(corpus, q, hits, answer),
     latencyMs: performance.now() - start,
   };
 });
-const answerable = rows.filter((r) => r.recallAt2 !== null);
 const report = {
   baseline: "lexical retrieval + exact extract; no model inference",
-  corpusHash: fingerprint(corpus),
-  datasetHash: fingerprint(queries),
-  cases: rows.length,
-  recallAt2:
-    answerable.reduce((n, r) => n + (r.recallAt2 ?? 0), 0) / answerable.length,
-  correct: rows.filter((r) => r.correct).length,
-  supported: rows.filter((r) => r.supported).length,
-  rows,
+  ...summarize(corpus, queries, rows),
+  calibration: await calibrate(corpus, queries),
 };
 await mkdir("reports", { recursive: true });
 await writeFile(
   "reports/evaluation.json",
   JSON.stringify(report, null, 2) + "\n",
 );
-console.log(JSON.stringify(report, null, 2));
-if (rows.some((r) => !r.correct || !r.supported)) process.exitCode = 1;
+await writeFile(
+  "reports/quality-summary.md",
+  `# Retrieval baseline results
+
+Engineering regression gate: ${report.regressionPassed ? "passed" : "FAILED"}.
+
+Dataset quality gate: ${report.qualityPassed ? "passed" : "FAILED"}.
+
+Regressions: ${report.suites.regression.correct}/${report.suites.regression.cases}. Challenges: ${report.suites.challenge.correct}/${report.suites.challenge.cases}.
+
+Evaluator calibration: ${report.calibration.cases} synthetic labeled answers, ${report.calibration.falseAccepts} false accepts and ${report.calibration.falseRejects} false rejects.
+
+Failed cases: ${
+    rows
+      .filter((r) => !r.correct)
+      .map((r) => r.id)
+      .join(", ") || "none"
+  }.
+
+A green engineering check does not establish answer quality. Run npm run evaluate:quality to enforce all cases; the current baseline fails that gate.
+`,
+);
+console.log(
+  JSON.stringify(
+    {
+      regressionPassed: report.regressionPassed,
+      qualityPassed: report.qualityPassed,
+      suites: report.suites,
+      failures: rows.filter((r) => !r.correct).map((r) => r.id),
+    },
+    null,
+    2,
+  ),
+);
+if (
+  !report.regressionPassed ||
+  !report.calibration.passed ||
+  (process.argv.includes("--strict") && !report.qualityPassed)
+)
+  process.exitCode = 1;

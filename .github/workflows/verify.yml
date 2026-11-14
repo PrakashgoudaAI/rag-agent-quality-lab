@@ -1,4 +1,4 @@
-name: Verify retrieval and tool policy
+name: Verify engineering checks
 on:
   pull_request:
   push:
@@ -20,10 +20,15 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm run verify
+      - name: Publish dataset quality summary
+        if: ${{ !cancelled() }}
+        run: cat reports/quality-summary.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         if: ${{ !cancelled() }}
         with:
           name: fixture-evaluation
-          path: reports/evaluation.json
+          path: |
+            reports/evaluation.json
+            reports/quality-summary.md
           if-no-files-found: error
           retention-days: 7

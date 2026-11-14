@@ -1,34 +1,51 @@
 # Retrieval and Agent Quality Lab
 
-A small TypeScript harness for separating retrieval correctness, answer evidence and tool execution policy. The corpus and actions are synthetic. It runs without an account, model endpoint or API key.
+TypeScript checks for retrieval relevance, answer evidence and MCP write boundaries. The documents, tenants and actions are synthetic. The default checks need Node.js 24, with no model service or API key.
 
 ```sh
 npm ci --ignore-scripts
 npm run verify
 ```
 
-Use Node.js 24. Verification checks TypeScript, promise-handling lint and formatting, runs the tests and writes `reports/evaluation.json`. The report records corpus/dataset hashes, per-case retrieval IDs, recall at two for answerable cases, expected answer/abstention checks and local latency. The five-case fixture is a smoke dataset, not an estimate of real-world accuracy.
+The suite checks types, promise handling, formatting, HTTP adapter faults, evaluator calibration and real MCP calls through linked transports. Reports are written to ignored `reports/`.
 
-## Retrieval and evidence
+## What the baseline shows
 
-`src/retrieval.ts` filters tenant and current-version documents before lexical ranking. The baseline copies one canonical document into its answer. Citations contain IDs, character ranges and exact text; the verifier checks all three against the authorized canonical corpus and requires the answer to equal those spans. Altered retrieved text, foreign/stale citations and fabricated answer text are rejected by negative controls.
+Nine documents and twenty-three labeled queries cover current/stale policies, tenant boundaries, lookup, irrelevant overlap, missing evidence and refusal. The lexical retriever passes eighteen regression cases and fails all five challenges. The complete quality gate is **failing**. Those failures are kept visible as development targets.
 
-This is an exact extraction baseline. It does not run an LLM, compute embeddings or judge semantic entailment. Lexical overlap can retrieve irrelevant text, and exact citation support alone does not establish relevance. Expected document/abstention labels are checked separately. A modified-context fixture tests one injection pattern; it does not establish general prompt-injection resistance.
+```sh
+npm run evaluate          # regression check plus the complete quality report
+npm run evaluate:quality  # enforces every case; currently exits 1
+```
 
-## MCP tool policy
+An answer must quote complete required paragraphs, cite exact ranges in authorized current documents, and use evidence actually retrieved. Correct citations alone cannot make an irrelevant or incomplete answer pass. Ten synthetic calibration answers check false accepts and false rejects. See [the rubric and denominators](docs/evaluation-design.md).
 
-`src/tools.ts` connects the official MCP client and server through paired in-memory transports. Tests perform discovery and tool calls through the protocol. The host supplies a fixed identity; tool arguments cannot choose a tenant. A strict input schema, editor role and explicit host approval are required to create a synthetic note. Repeating the same key/payload returns the same note; changing the payload conflicts.
+## Local model evaluation
 
-The action runner allows only the registered write tool, caps steps and duration, and checks cancellation before every call. It stops after a tool denial. The initial tests cover pre-cancellation and the step limit; they do not demonstrate rollback of a request already accepted by a remote tool. Notes and replay state are in memory for one session. There is no claim of durable or cross-process idempotency, OAuth authentication or network transport coverage.
+The optional adapter uses Ollama's [chat API](https://docs.ollama.com/api/chat) with a [JSON output schema](https://docs.ollama.com/capabilities/structured-outputs). Start your already installed local Ollama service, then select an installed model:
 
-The SDK integration follows the [official TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk/tree/v1.x), pinned in the lockfile. Transport and identity establishment are deliberately distinct concerns.
+```sh
+LOCAL_MODEL=qwen3:4b npm run evaluate:model
+```
 
-## Current evidence and next work
+The command never downloads a model. It allows a loopback HTTP origin, refuses redirects and bounds requests, bytes, generation length and elapsed time. There are no automatic retries or answer repairs. It does not execute model tool suggestions. Model setup and structured-output compatibility remain local prerequisites; the adapter cannot control whether an independently configured server proxies requests elsewhere. The recorded experiment disables cloud features.
 
-On 2 November 2026, strict TypeScript checks and seven tests passed locally with Node.js 24.4.0 on macOS. The smoke evaluation returned the expected result for all five cases, with recall at two of 1.0 over the two answerable cases. These measurements describe the checked-in deterministic fixtures. A source-only copy in a path containing a space also passed a fresh locked installation and the full verification command. No model-backed quality result or hosted CI run is claimed.
+The output is `reports/model-evaluation.json`; any failed case makes the command exit 1. The scorer uses the same reference labels as the deterministic baseline. Exact extraction results should not be presented as general language-model accuracy.
 
-Next work: expand labeled adversarial/relevance cases, add a bounded local model adapter and evaluate its responses using the same canonical evidence checks. Test cancellation during a delayed tool request and define reconciliation for ambiguous write outcomes before introducing automatic retries.
+## MCP write boundaries
 
-All fixtures are original synthetic examples. Source is MIT licensed; dependencies retain their own licenses.
+The official MCP client/server SDK performs discovery and calls over paired in-memory transports. A fixed host identity, strict argument schema, editor role and host approval are required for `create_note`. Tool arguments cannot override the tenant. Identical key/payload requests replay one record; changed intent conflicts.
 
-The lint toolchain uses TypeScript 5.9.3, within its supported peer range. A minimatch 11.0.1 override keeps the locked lint dependency tree patched.
+The runner limits actions and time and stops on denial or cancellation. Tests pause a handler before and after its write. Cancellation before commit prevents the effect; cancellation after commit leaves a record that the same request key can recover. See [the cancellation decision](docs/decisions/002-cancellation-and-replay.md). Replay state is session-local and not durable.
+
+## Evidence and debugging
+
+Run `npm test` to isolate implementation tests. The controlled HTTP server tests malformed JSON, unexpected status/media type, redirects, excessive streamed bytes, stalled bodies, cancellation and exhausted request budgets. They are protocol tests, not model quality measurements.
+
+For a rejected model answer, inspect the row's schema, citation validity, context binding, evidence coverage and abstention checks. Compare corpus/dataset/request hashes before comparing runs. A valid quote can still be irrelevant. A failed request is a failed case, not an abstention.
+
+On 14 November 2026, 27 implementation tests passed locally. The deterministic baseline passed 18 regression cases and failed all five challenges; ten calibration answers produced zero false accepts/rejects. Two actual local Qwen3 4B runs also failed the quality gate, with answerable coverage of 3/11 and 0/11. See [the measured results and limits](docs/experiments/).
+
+The first milestone passed seven tests and five smoke cases. This milestone expands both the checks and failure visibility; its results are recorded under [experiments](docs/experiments/). Future work should improve retrieval and abstention against the fixed challenge labels, add independently reviewed cases and verify durable tool reconciliation before introducing automatic write retries.
+
+Source and original synthetic fixtures are MIT licensed. Dependencies retain their licenses. The lint toolchain uses supported TypeScript 5.9.3 and a minimatch 11.0.1 override for its locked dependency tree.

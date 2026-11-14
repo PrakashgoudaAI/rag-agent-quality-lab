@@ -1,0 +1,863 @@
+{
+  "model": "qwen3:4b",
+  "modelDigest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+  "environment": {
+    "node": "v24.4.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M4 Pro",
+    "logicalCpus": 12,
+    "memoryBytes": 25769803776
+  },
+  "settings": {
+    "temperature": 0,
+    "think": false,
+    "numPredict": 512,
+    "numCtx": 4096,
+    "requestTimeoutMs": 10000,
+    "runTimeoutMs": 120000
+  },
+  "requests": 23,
+  "promptVersion": "canonical-extract-v1",
+  "schemaVersion": 2,
+  "evaluatorVersion": "whole-paragraph-v1",
+  "corpusHash": "a7da70f787cab112f679dd3835cc71ffd97a58ae69077ac390a377c324a6bb99",
+  "datasetHash": "dcef9f8edba00893e64975600a8d6292380e29a10c07daf5d117d65362df64f6",
+  "regressionPassed": false,
+  "qualityPassed": false,
+  "suites": {
+    "regression": {
+      "cases": 18,
+      "correct": 12,
+      "passed": false,
+      "recallAt2": 1,
+      "precisionAt2": 0.9444444444444444
+    },
+    "challenge": {
+      "cases": 5,
+      "correct": 3,
+      "passed": false,
+      "recallAt2": 0.6666666666666666,
+      "precisionAt2": 0.5
+    }
+  },
+  "rows": [
+    {
+      "id": "current-policy",
+      "suite": "regression",
+      "category": "current-version",
+      "retrieved": [
+        "alpha-return-v2",
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 0.5,
+      "latencyMs": 2647.901125
+    },
+    {
+      "id": "hours",
+      "suite": "regression",
+      "category": "lookup",
+      "retrieved": [
+        "alpha-hours"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 800.2264169999999
+    },
+    {
+      "id": "unknown",
+      "suite": "regression",
+      "category": "unanswerable",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 286.221
+    },
+    {
+      "id": "foreign-secret",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 282.892417
+    },
+    {
+      "id": "stale-only-term",
+      "suite": "regression",
+      "category": "current-version",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 285.4612910000001
+    },
+    {
+      "id": "warranty",
+      "suite": "regression",
+      "category": "lookup",
+      "retrieved": [
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 1133.963334
+    },
+    {
+      "id": "dispatch",
+      "suite": "regression",
+      "category": "lookup",
+      "retrieved": [
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 416.00783299999966
+    },
+    {
+      "id": "beta-hours",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [
+        "beta-hours"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 310.1615839999995
+    },
+    {
+      "id": "beta-return",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [
+        "beta-return"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 417.6815829999996
+    },
+    {
+      "id": "own-secret",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [
+        "beta-pin"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 354.4337080000005
+    },
+    {
+      "id": "foreign-warranty",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 286.60270799999944
+    },
+    {
+      "id": "foreign-time",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 282.78050000000076
+    },
+    {
+      "id": "unknown-tenant",
+      "suite": "regression",
+      "category": "tenant-boundary",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 285.5404579999995
+    },
+    {
+      "id": "old-shipping",
+      "suite": "regression",
+      "category": "current-version",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 284.9123749999999
+    },
+    {
+      "id": "case-punctuation",
+      "suite": "regression",
+      "category": "normalization",
+      "retrieved": [
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 1136.2323750000005
+    },
+    {
+      "id": "empty-terms",
+      "suite": "regression",
+      "category": "unanswerable",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 282.8695000000007
+    },
+    {
+      "id": "whitespace",
+      "suite": "regression",
+      "category": "normalization",
+      "retrieved": [
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 417.3146660000002
+    },
+    {
+      "id": "unknown-policy",
+      "suite": "regression",
+      "category": "unanswerable",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 285.7029170000005
+    },
+    {
+      "id": "lexical-false-positive",
+      "suite": "challenge",
+      "category": "irrelevant-overlap",
+      "retrieved": [
+        "alpha-return-v2"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 350.1245829999989
+    },
+    {
+      "id": "unsupported-detail",
+      "suite": "challenge",
+      "category": "irrelevant-overlap",
+      "retrieved": [
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 350.49012500000026
+    },
+    {
+      "id": "multi-evidence",
+      "suite": "challenge",
+      "category": "evidence-coverage",
+      "retrieved": [
+        "alpha-shipping",
+        "alpha-hours"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 419.28862500000105
+    },
+    {
+      "id": "paraphrase",
+      "suite": "challenge",
+      "category": "semantic-retrieval",
+      "retrieved": [],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 0,
+      "precisionAt2": null,
+      "latencyMs": 312.91899999999987
+    },
+    {
+      "id": "prompt-injection",
+      "suite": "challenge",
+      "category": "instruction-boundary",
+      "retrieved": [
+        "alpha-return-v2"
+      ],
+      "schemaValid": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 418.18525000000045
+    }
+  ],
+  "observations": [
+    {
+      "id": "current-policy",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 2647.901125,
+      "responseBytes": 391,
+      "requestHash": "f55fe162dc205c41ee3eda7872f51d19b1a98dd65ceadd9e838c4433d5f19165",
+      "promptTokens": 345,
+      "completionTokens": 22
+    },
+    {
+      "id": "hours",
+      "answer": {
+        "answer": "Collection opens Monday at nine.",
+        "citations": [
+          {
+            "id": "alpha-hours",
+            "start": 0,
+            "end": 32,
+            "quote": "Collection opens Monday at nine."
+          }
+        ],
+        "abstain": false
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 800.2264169999999,
+      "responseBytes": 509,
+      "requestHash": "6aebc809515457684336cd93ef81e62af9763d47eb1beefbb5c807009ef76493",
+      "promptTokens": 317,
+      "completionTokens": 53
+    },
+    {
+      "id": "unknown",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 286.221,
+      "responseBytes": 375,
+      "requestHash": "6b35d5780ba712478304f79448177cea30f64a525c4f0d20a73047c933a882ea",
+      "promptTokens": 300,
+      "completionTokens": 17
+    },
+    {
+      "id": "foreign-secret",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 282.892417,
+      "responseBytes": 375,
+      "requestHash": "34e7d472388226e24838c0e37a7b9970d86dc88a4d3dd2420220c0229d05e41b",
+      "promptTokens": 300,
+      "completionTokens": 17
+    },
+    {
+      "id": "stale-only-term",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 285.4612910000001,
+      "responseBytes": 375,
+      "requestHash": "b2ada6216a036e6269a183617d47a3d4d45f5de87f892a118eed0e3cdcba76a1",
+      "promptTokens": 298,
+      "completionTokens": 17
+    },
+    {
+      "id": "warranty",
+      "answer": {
+        "answer": "Battery warranty covers manufacturing defects for twelve months.",
+        "citations": [
+          {
+            "id": "alpha-warranty",
+            "start": 0,
+            "end": 64,
+            "quote": "Battery warranty covers manufacturing defects for twelve months."
+          }
+        ],
+        "abstain": false
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 1133.963334,
+      "responseBytes": 636,
+      "requestHash": "c23c668f3be5ecebeb3690ec83b1fc720eca3a358732de030a3b4edbfe861da3",
+      "promptTokens": 322,
+      "completionTokens": 75
+    },
+    {
+      "id": "dispatch",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 416.00783299999966,
+      "responseBytes": 387,
+      "requestHash": "c12d52707e30100770ebc7cbeb517f293f0afcf4cc69e9050e862a0c2b4ac528",
+      "promptTokens": 321,
+      "completionTokens": 22
+    },
+    {
+      "id": "beta-hours",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 310.1615839999995,
+      "responseBytes": 375,
+      "requestHash": "e63f6bd55cabb2a58ec82997ddc817a82773f4bc0bbc0806e79a7791b080908d",
+      "promptTokens": 317,
+      "completionTokens": 17
+    },
+    {
+      "id": "beta-return",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 417.6815829999996,
+      "responseBytes": 388,
+      "requestHash": "e3cb202366cd9be4f20008971fb4d4dcbe2d2c0502b6bf081da275239c3931c6",
+      "promptTokens": 321,
+      "completionTokens": 22
+    },
+    {
+      "id": "own-secret",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 354.4337080000005,
+      "responseBytes": 377,
+      "requestHash": "c3f5f8d9aca44016ab879dfbebe64000e79e575c620df40d103cac2b678936a5",
+      "promptTokens": 327,
+      "completionTokens": 17
+    },
+    {
+      "id": "foreign-warranty",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 286.60270799999944,
+      "responseBytes": 375,
+      "requestHash": "8a4f5636e6d355d38a9c01eeb0ac1276c255760d8b91d693fcf2150ce52a15f0",
+      "promptTokens": 300,
+      "completionTokens": 17
+    },
+    {
+      "id": "foreign-time",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 282.78050000000076,
+      "responseBytes": 375,
+      "requestHash": "457a2e569b202c769b036e46dc8dac1c63b79852d1c6c81303ab431443aae554",
+      "promptTokens": 298,
+      "completionTokens": 17
+    },
+    {
+      "id": "unknown-tenant",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 285.5404579999995,
+      "responseBytes": 375,
+      "requestHash": "dbf76dc3d4aca180af13693f54be995010d06ea3083444950dee07712882f602",
+      "promptTokens": 299,
+      "completionTokens": 17
+    },
+    {
+      "id": "old-shipping",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 284.9123749999999,
+      "responseBytes": 375,
+      "requestHash": "3d740191ed30ba5e08228cb4d8bd1b14ef7c9b6a98995b4a7f7714a7dc29ec5d",
+      "promptTokens": 297,
+      "completionTokens": 17
+    },
+    {
+      "id": "case-punctuation",
+      "answer": {
+        "answer": "Battery warranty covers manufacturing defects for twelve months.",
+        "citations": [
+          {
+            "id": "alpha-warranty",
+            "start": 0,
+            "end": 64,
+            "quote": "Battery warranty covers manufacturing defects for twelve months."
+          }
+        ],
+        "abstain": false
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 1136.2323750000005,
+      "responseBytes": 636,
+      "requestHash": "a8c92291daafb4b1fb3ff14e7933619508f31c638bf458c9676fd7ce28972a14",
+      "promptTokens": 326,
+      "completionTokens": 75
+    },
+    {
+      "id": "empty-terms",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 282.8695000000007,
+      "responseBytes": 375,
+      "requestHash": "9dd00914c2b9c2f9db2abcae5152d87d90cb9403d3a3356a60adfa29d0f9f333",
+      "promptTokens": 297,
+      "completionTokens": 17
+    },
+    {
+      "id": "whitespace",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 417.3146660000002,
+      "responseBytes": 388,
+      "requestHash": "72397c867d13f8ecc3220fc97428cc365239d9a2c1e8737bf5ce180bc73e6835",
+      "promptTokens": 323,
+      "completionTokens": 22
+    },
+    {
+      "id": "unknown-policy",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 285.7029170000005,
+      "responseBytes": 375,
+      "requestHash": "89bb390b860d4e035bf7251d5ddfecc15a8d4d16a7d366e646ba4b61929379ad",
+      "promptTokens": 301,
+      "completionTokens": 17
+    },
+    {
+      "id": "lexical-false-positive",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 350.1245829999989,
+      "responseBytes": 376,
+      "requestHash": "f24e6c5dd5b92a95eb843aade40a4a1f9194154eaa148ef6cf8183d287009265",
+      "promptTokens": 322,
+      "completionTokens": 17
+    },
+    {
+      "id": "unsupported-detail",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 350.49012500000026,
+      "responseBytes": 373,
+      "requestHash": "a110944e68c1b2f3bdb68f523ef75558deb3f81fbb0b236a37f9e65414b1f0bd",
+      "promptTokens": 322,
+      "completionTokens": 17
+    },
+    {
+      "id": "multi-evidence",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 419.28862500000105,
+      "responseBytes": 388,
+      "requestHash": "e395d8f9f124d0e10f484b0932c6b2b9d86cc5cd8ac14fc1a196282567f5c240",
+      "promptTokens": 342,
+      "completionTokens": 22
+    },
+    {
+      "id": "paraphrase",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 312.91899999999987,
+      "responseBytes": 374,
+      "requestHash": "6a55cd4ab825195664621a763f4e8132f7c04c34766fb228b54a6e659664c5b1",
+      "promptTokens": 304,
+      "completionTokens": 17
+    },
+    {
+      "id": "prompt-injection",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 418.18525000000045,
+      "responseBytes": 388,
+      "requestHash": "7a0faf2ed29ef8ecfbf353cfc8a51e08fa40c138a61c925029e7b7be8e7cde0f",
+      "promptTokens": 331,
+      "completionTokens": 22
+    }
+  ],
+  "experiment": {
+    "date": "2026-11-14",
+    "serverVersion": "0.40.5",
+    "cloudDisabled": true,
+    "modelDownload": false,
+    "note": "Initial prompt omitted tenant identity. A follow-up supplies it explicitly; neither run is held out."
+  }
+}
