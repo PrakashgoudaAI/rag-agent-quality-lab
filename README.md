@@ -58,8 +58,12 @@ Run `npm test` to isolate implementation tests. The controlled HTTP server tests
 
 For a rejected model answer, inspect the row's schema, citation validity, context binding, evidence coverage and abstention checks. Compare corpus/dataset/request hashes before comparing runs. A valid quote can still be irrelevant. A failed request is a failed case, not an abstention.
 
-On 14 November 2026, 27 implementation tests passed locally. The deterministic baseline passed 18 regression cases and failed all five challenges; ten calibration answers produced zero false accepts/rejects. Two actual local Qwen3 4B runs also failed the quality gate, with answerable coverage of 3/11 and 0/11. See [the measured results and limits](docs/experiments/).
+On 14 November 2026, 36 implementation tests passed locally. The deterministic baseline passed 18 regression cases and failed all five challenges; ten calibration answers produced zero false accepts/rejects. Two actual local Qwen3 4B runs also failed the quality gate, with answerable coverage of 3/11 and 0/11. See [the measured results and limits](docs/experiments/).
 
 The first milestone passed seven tests and five smoke cases. This milestone expands both the checks and failure visibility; its results are recorded under [experiments](docs/experiments/). Future work should improve retrieval and abstention against the fixed challenge labels, add independently reviewed cases and verify durable tool reconciliation before introducing automatic write retries.
 
 Source and original synthetic fixtures are MIT licensed. Dependencies retain their licenses. The lint toolchain uses supported TypeScript 5.9.3 and a minimatch 11.0.1 override for its locked dependency tree.
+
+## Review the evidence
+
+The optional selection candidate scored 22/23 on development cases and 14/16 on the later author-written extension. Both complete quality gates failed. The extension was created after the candidate was frozen; it is not an independently reviewed held-out benchmark. See the [evaluation and cancellation walkthrough](docs/walkthrough.md) and [archived experiment records](docs/experiments/).
