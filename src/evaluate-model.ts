@@ -1,17 +1,26 @@
+import { retrieveExpanded, retrievalVersion } from "./selection.ts";
 import { platform, arch, cpus, totalmem } from "node:os";
 import { mkdir, writeFile } from "node:fs/promises";
 import { loadDataset } from "./dataset.ts";
 import { LocalModel } from "./ollama.ts";
 import { retrieve } from "./retrieval.ts";
 import { scoreAnswer, summarize, type ScoredRow } from "./evaluation.ts";
+const args = process.argv.slice(2);
+if (args.some((a) => !["--selection", "--extension"].includes(a)))
+  throw new Error("Unknown evaluation option.");
+const selecting = args.includes("--selection");
+const extension = args.includes("--extension");
 const model = process.env.LOCAL_MODEL;
 if (!model)
   throw new Error(
     "Set LOCAL_MODEL to an already installed Ollama model. No models are downloaded by this command.",
   );
-const { corpus, queries } = await loadDataset();
+const { corpus, queries } = await loadDataset(
+  extension ? "extension" : "development",
+);
 const adapter = new LocalModel({
   model,
+  mode: selecting ? "select" : "extract",
   maxRequests: queries.length,
   timeoutMs: 10000,
 });
@@ -19,7 +28,11 @@ const deadline = AbortSignal.timeout(120000);
 const rows: ScoredRow[] = [];
 const observations = [];
 for (const q of queries) {
-  const hits = retrieve(corpus, q.tenant, q.question);
+  const hits = (selecting ? retrieveExpanded : retrieve)(
+    corpus,
+    q.tenant,
+    q.question,
+  );
   const start = performance.now();
   try {
     const result = await adapter.answer(corpus, q, hits, deadline);
@@ -49,6 +62,9 @@ for (const q of queries) {
 }
 const report = {
   model,
+  evaluationSet: extension ? "author-extension" : "development",
+  pipeline: selecting ? "selection" : "extract",
+  retrievalVersion: selecting ? retrievalVersion : "overlap-v1",
   modelDigest: process.env.LOCAL_MODEL_DIGEST ?? null,
   environment: {
     node: process.version,
@@ -67,7 +83,7 @@ const report = {
     runTimeoutMs: 120000,
   },
   requests: adapter.requests,
-  promptVersion: "canonical-extract-v2",
+  promptVersion: selecting ? "evidence-selection-v1" : "canonical-extract-v2",
   ...summarize(corpus, queries, rows),
   observations,
 };

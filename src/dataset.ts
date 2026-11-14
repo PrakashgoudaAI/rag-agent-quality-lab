@@ -9,7 +9,9 @@ const documentSchema = z
     text: z.string().min(1).max(6000),
   })
   .strict();
-export async function loadDataset() {
+export async function loadDataset(
+  set: "development" | "extension" = "development",
+) {
   const corpus = z
     .array(documentSchema)
     .min(1)
@@ -24,7 +26,12 @@ export async function loadDataset() {
     .parse(
       JSON.parse(
         await readFile(
-          new URL("../data/queries.json", import.meta.url),
+          new URL(
+            set === "development"
+              ? "../data/queries.json"
+              : "../data/extension.json",
+            import.meta.url,
+          ),
           "utf8",
         ),
       ),

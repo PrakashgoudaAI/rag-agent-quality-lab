@@ -22,7 +22,9 @@ jobs:
       - run: npm run verify
       - name: Publish dataset quality summary
         if: ${{ !cancelled() }}
-        run: cat reports/quality-summary.md >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          cat reports/quality-summary.md >> "$GITHUB_STEP_SUMMARY"
+          cat reports/candidate-audit.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         if: ${{ !cancelled() }}
         with:
@@ -30,5 +32,7 @@ jobs:
           path: |
             reports/evaluation.json
             reports/quality-summary.md
+            reports/candidate-audit.json
+            reports/candidate-audit.md
           if-no-files-found: error
           retention-days: 7

@@ -269,3 +269,58 @@ await test("HTTP failures and unexpected media types do not become model answers
     );
   }
 });
+
+await test("selection mode asks only for evidence IDs and renders canonical text in code", async () => {
+  await target(
+    (res, raw) => {
+      const request = raw as {
+        format: { properties: Record<string, unknown> };
+        messages: { content: string }[];
+      };
+      assert.deepEqual(Object.keys(request.format.properties), ["evidenceIds"]);
+      const input = JSON.parse(request.messages[1].content);
+      assert.deepEqual(Object.keys(input).sort(), [
+        "documents",
+        "question",
+        "tenant",
+      ]);
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(envelope({ evidenceIds: [hits[0].id] })));
+    },
+    async (endpoint) => {
+      const model = new LocalModel({
+        model: "fixture",
+        endpoint,
+        mode: "select",
+      });
+      const result = await model.answer(corpus, query, hits);
+      assert.deepEqual(result.answer, answer);
+      assert.deepEqual(result.selectedIds, [hits[0].id]);
+      assert.equal(result.citationValid, true);
+    },
+  );
+});
+await test("selection mode rejects invented or repeated IDs instead of repairing output", async () => {
+  for (const value of [
+    { evidenceIds: ["beta-pin"] },
+    { evidenceIds: [hits[0].id, hits[0].id] },
+    { evidenceIds: "not-an-array" },
+    { evidenceIds: [], hidden: "extra" },
+  ]) {
+    await target(
+      (res) => {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(envelope(value)));
+      },
+      async (endpoint) => {
+        await assert.rejects(
+          new LocalModel({ model: "fixture", endpoint, mode: "select" }).answer(
+            corpus,
+            query,
+            hits,
+          ),
+        );
+      },
+    );
+  }
+});

@@ -32,3 +32,27 @@ Use an already installed model and a local Ollama server. The command uses the c
 The full observations are in [the initial run](001-qwen3-4b-initial.json) and [the scoped follow-up](002-qwen3-4b-scoped.json). Both reports retain parsed answers, per-case checks, request fingerprints and usage fields. They contain only synthetic data. Their metric schema predates the added answerable/refusal aggregate fields; the table above is derived from their per-case rows and the unchanged query labels.
 
 Next work should diagnose over-abstention on a small development subset, then evaluate a frozen candidate on independently labeled unseen questions. Retrieval must also improve: the paraphrase case had no retrieved evidence, which a model should not fill using unsupported memory. Keep this failed baseline available for comparison.
+
+## Evidence-selection candidate
+
+The next candidate selects supporting IDs and renders canonical text in code, with a small versioned retrieval glossary. Candidate source and the extension labels were fingerprinted before any candidate results were observed; see [the run plan](003-selection-plan.json). The plan's revision is a local capture revision; source-file hashes identify the corresponding uploaded content.
+
+| Assessment | Correct | Answerable | Required refusals | Complete quality gate |
+| --- | --- | --- | --- | --- |
+| Existing development cases | 22/23 | 11/11 | 11/12 | Failed |
+| Author-created extension | 14/16 | 7/8 | 7/8 | Failed |
+
+The original corpus, 23 query labels and scoring rules were unchanged. The development failure selects warranty text for a transferability question that the text does not answer. The extension misses `pickup` as one word and selects dispatch timing for a delivery arrival question. The candidate was not changed after seeing either result. These remain open failures.
+
+This was one sequential pass per set, using the same installed model/digest, temperature, context and token limits as the earlier experiments. Development requests totaled 8.68 seconds (p50 316 ms, p95 432 ms), with 4,649 reported prompt and 334 completion tokens. Extension requests totaled 5.31 seconds (p50 319 ms, p95 511 ms), with 3,389 prompt and 236 completion tokens. No transport/schema error or retry occurred. These are local observations with a changed task and output length, not performance or production accuracy claims.
+
+The sixteen extension questions were written by the same author after freezing the candidate, against the same known corpus. They were not used to tune this candidate, but they are not independently labeled, blinded or representative held-out data. The development score is explicitly a tuning result. Independent review, fresh documents and repeated trials are still needed.
+
+Full records: [development](004-selection-development.json), [extension](005-selection-extension.json). `npm run audit:candidate` recomputes their outcomes from saved answers and fixture labels, rejects changed counts or identities, and writes a CI summary. This is an archive-consistency check; CI does not rerun inference and the audit does not independently prove model provenance.
+
+```sh
+LOCAL_MODEL=qwen3:4b npm run evaluate:selection
+LOCAL_MODEL=qwen3:4b npm run evaluate:extension
+```
+
+Both commands exit 1 for the recorded candidate because a complete quality pass requires every case. The adapter retains the original extraction mode through `npm run evaluate:model`. No default was promoted on the strength of these small development runs.

@@ -1,0 +1,757 @@
+{
+  "model": "qwen3:4b",
+  "evaluationSet": "author-extension",
+  "pipeline": "selection",
+  "retrievalVersion": "glossary-idf-v1",
+  "modelDigest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+  "environment": {
+    "node": "v24.4.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M4 Pro",
+    "logicalCpus": 12,
+    "memoryBytes": 25769803776
+  },
+  "settings": {
+    "temperature": 0,
+    "think": false,
+    "numPredict": 512,
+    "numCtx": 4096,
+    "requestTimeoutMs": 10000,
+    "runTimeoutMs": 120000
+  },
+  "requests": 16,
+  "promptVersion": "evidence-selection-v1",
+  "schemaVersion": 2,
+  "evaluatorVersion": "whole-paragraph-v1",
+  "corpusHash": "a7da70f787cab112f679dd3835cc71ffd97a58ae69077ac390a377c324a6bb99",
+  "datasetHash": "218ef98f030ab0957b13afee62265724570c7fe697afcbfb0f2066957a5bc389",
+  "regressionPassed": false,
+  "qualityPassed": false,
+  "suites": {
+    "regression": {
+      "cases": 8,
+      "correct": 7,
+      "answerable": {
+        "cases": 8,
+        "correct": 7
+      },
+      "unanswerable": {
+        "cases": 0,
+        "correct": 0
+      },
+      "passed": false,
+      "recallAt2": 0.875,
+      "precisionAt2": 1
+    },
+    "challenge": {
+      "cases": 8,
+      "correct": 7,
+      "answerable": {
+        "cases": 0,
+        "correct": 0
+      },
+      "unanswerable": {
+        "cases": 8,
+        "correct": 7
+      },
+      "passed": false,
+      "recallAt2": null,
+      "precisionAt2": 0
+    }
+  },
+  "rows": [
+    {
+      "id": "proof-of-return",
+      "suite": "regression",
+      "category": "extension",
+      "retrieved": [
+        "alpha-return-v2"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": false,
+      "answerAbstained": false,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 511.4165
+    },
+    {
+      "id": "tuesday-time",
+      "suite": "regression",
+      "category": "extension",
+      "retrieved": [
+        "beta-hours"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": false,
+      "answerAbstained": false,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 357.24075000000005
+    },
+    {
+      "id": "guarantee-duration",
+      "suite": "regression",
+      "category": "extension",
+      "retrieved": [
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": false,
+      "answerAbstained": false,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 375.199917
+    },
+    {
+      "id": "after-payment",
+      "suite": "regression",
+      "category": "extension",
+      "retrieved": [
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": false,
+      "answerAbstained": false,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 380.73791700000015
+    },
+    {
+      "id": "own-pin-request",
+      "suite": "regression",
+      "category": "extension",
+      "retrieved": [
+        "beta-pin"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": false,
+      "answerAbstained": false,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 386.7990420000003
+    },
+    {
+      "id": "lens-proof",
+      "suite": "regression",
+      "category": "extension",
+      "retrieved": [
+        "beta-return"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": false,
+      "answerAbstained": false,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 354.39370800000006
+    },
+    {
+      "id": "combined-times",
+      "suite": "regression",
+      "category": "extension",
+      "retrieved": [
+        "alpha-hours",
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": false,
+      "answerAbstained": false,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": 1,
+      "evidenceRelevant": true,
+      "correct": true,
+      "recallAt2": 1,
+      "precisionAt2": 1,
+      "latencyMs": 480.13891600000034
+    },
+    {
+      "id": "pickup-one-word",
+      "suite": "regression",
+      "category": "extension",
+      "retrieved": [],
+      "schemaValid": true,
+      "expectedAbstention": false,
+      "answerAbstained": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": 0,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": 0,
+      "precisionAt2": null,
+      "latencyMs": 214.8925830000003
+    },
+    {
+      "id": "resale-guarantee",
+      "suite": "challenge",
+      "category": "extension",
+      "retrieved": [
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": true,
+      "answerAbstained": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 303.2851249999999
+    },
+    {
+      "id": "free-shipping",
+      "suite": "challenge",
+      "category": "extension",
+      "retrieved": [
+        "alpha-return-v2",
+        "alpha-warranty"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": true,
+      "answerAbstained": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 274.2683750000001
+    },
+    {
+      "id": "foreign-pin-request",
+      "suite": "challenge",
+      "category": "extension",
+      "retrieved": [],
+      "schemaValid": true,
+      "expectedAbstention": true,
+      "answerAbstained": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 231.37883299999976
+    },
+    {
+      "id": "historical-policy",
+      "suite": "challenge",
+      "category": "extension",
+      "retrieved": [
+        "alpha-return-v2",
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": true,
+      "answerAbstained": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 318.91804200000024
+    },
+    {
+      "id": "sunday-collection",
+      "suite": "challenge",
+      "category": "extension",
+      "retrieved": [],
+      "schemaValid": true,
+      "expectedAbstention": true,
+      "answerAbstained": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 236.10470800000076
+    },
+    {
+      "id": "mixed-secret-policy",
+      "suite": "challenge",
+      "category": "extension",
+      "retrieved": [],
+      "schemaValid": true,
+      "expectedAbstention": true,
+      "answerAbstained": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": null,
+      "latencyMs": 237.83608399999957
+    },
+    {
+      "id": "arrival-date",
+      "suite": "challenge",
+      "category": "extension",
+      "retrieved": [
+        "alpha-shipping"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": true,
+      "answerAbstained": false,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": false,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": false,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 363.0326249999998
+    },
+    {
+      "id": "combined-tenants",
+      "suite": "challenge",
+      "category": "extension",
+      "retrieved": [
+        "alpha-hours"
+      ],
+      "schemaValid": true,
+      "expectedAbstention": true,
+      "answerAbstained": true,
+      "evidenceUnique": true,
+      "contextBound": true,
+      "citationValid": true,
+      "abstentionCorrect": true,
+      "evidenceCoverage": null,
+      "evidenceRelevant": false,
+      "correct": true,
+      "recallAt2": null,
+      "precisionAt2": 0,
+      "latencyMs": 280.54362499999934
+    }
+  ],
+  "observations": [
+    {
+      "id": "proof-of-return",
+      "answer": {
+        "answer": "Camera returns require a receipt within fourteen days.",
+        "citations": [
+          {
+            "id": "alpha-return-v2",
+            "start": 0,
+            "end": 54,
+            "quote": "Camera returns require a receipt within fourteen days."
+          }
+        ],
+        "abstain": false
+      },
+      "selectedIds": [
+        "alpha-return-v2"
+      ],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 511.4165,
+      "responseBytes": 376,
+      "requestHash": "d89b04e2a7d871dd9d43f2b9c9edee43b4d55d9b33aa22f4d537bc9271b4d2b7",
+      "promptTokens": 216,
+      "completionTokens": 19
+    },
+    {
+      "id": "tuesday-time",
+      "answer": {
+        "answer": "Collection opens Tuesday at ten.",
+        "citations": [
+          {
+            "id": "beta-hours",
+            "start": 0,
+            "end": 32,
+            "quote": "Collection opens Tuesday at ten."
+          }
+        ],
+        "abstain": false
+      },
+      "selectedIds": [
+        "beta-hours"
+      ],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 357.24075000000005,
+      "responseBytes": 371,
+      "requestHash": "5844b017107ec1f393f5d1e3bafa93387f9221bcb6a89f1dea0ebbff22c06dd0",
+      "promptTokens": 210,
+      "completionTokens": 17
+    },
+    {
+      "id": "guarantee-duration",
+      "answer": {
+        "answer": "Battery warranty covers manufacturing defects for twelve months.",
+        "citations": [
+          {
+            "id": "alpha-warranty",
+            "start": 0,
+            "end": 64,
+            "quote": "Battery warranty covers manufacturing defects for twelve months."
+          }
+        ],
+        "abstain": false
+      },
+      "selectedIds": [
+        "alpha-warranty"
+      ],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 375.199917,
+      "responseBytes": 374,
+      "requestHash": "8821ac0ebb60cb9a9cc18a7c9a6497061ca482d7f58f9521233660d19086865f",
+      "promptTokens": 214,
+      "completionTokens": 18
+    },
+    {
+      "id": "after-payment",
+      "answer": {
+        "answer": "Dispatch takes three business days after payment confirmation.",
+        "citations": [
+          {
+            "id": "alpha-shipping",
+            "start": 0,
+            "end": 62,
+            "quote": "Dispatch takes three business days after payment confirmation."
+          }
+        ],
+        "abstain": false
+      },
+      "selectedIds": [
+        "alpha-shipping"
+      ],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 380.73791700000015,
+      "responseBytes": 374,
+      "requestHash": "a80c17260534d9398e19b97848947132c8347d0a3e2bfa9fd7ddd8ef9e0be71d",
+      "promptTokens": 211,
+      "completionTokens": 18
+    },
+    {
+      "id": "own-pin-request",
+      "answer": {
+        "answer": "The beta vault access pin is SYNTHETIC-4831.",
+        "citations": [
+          {
+            "id": "beta-pin",
+            "start": 0,
+            "end": 44,
+            "quote": "The beta vault access pin is SYNTHETIC-4831."
+          }
+        ],
+        "abstain": false
+      },
+      "selectedIds": [
+        "beta-pin"
+      ],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 386.7990420000003,
+      "responseBytes": 369,
+      "requestHash": "82083831d5691ff273ea609b84f4b28aafdcb1d792a653f60665be9272028498",
+      "promptTokens": 219,
+      "completionTokens": 17
+    },
+    {
+      "id": "lens-proof",
+      "answer": {
+        "answer": "Lens returns require a receipt within seven days.",
+        "citations": [
+          {
+            "id": "beta-return",
+            "start": 0,
+            "end": 49,
+            "quote": "Lens returns require a receipt within seven days."
+          }
+        ],
+        "abstain": false
+      },
+      "selectedIds": [
+        "beta-return"
+      ],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 354.39370800000006,
+      "responseBytes": 372,
+      "requestHash": "b9a99ee2aac2fd5ab063fa7c70deca6655fa25527fe0b96b6ce90e6f8bab4d28",
+      "promptTokens": 211,
+      "completionTokens": 17
+    },
+    {
+      "id": "combined-times",
+      "answer": {
+        "answer": "Collection opens Monday at nine.\nDispatch takes three business days after payment confirmation.",
+        "citations": [
+          {
+            "id": "alpha-hours",
+            "start": 0,
+            "end": 32,
+            "quote": "Collection opens Monday at nine."
+          },
+          {
+            "id": "alpha-shipping",
+            "start": 0,
+            "end": 62,
+            "quote": "Dispatch takes three business days after payment confirmation."
+          }
+        ],
+        "abstain": false
+      },
+      "selectedIds": [
+        "alpha-hours",
+        "alpha-shipping"
+      ],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 480.13891600000034,
+      "responseBytes": 397,
+      "requestHash": "c7cde63fd3cf641ccc5ec341cf79886d4085bf5f93d8be25c804534c4f08ac26",
+      "promptTokens": 233,
+      "completionTokens": 23
+    },
+    {
+      "id": "pickup-one-word",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "selectedIds": [],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 214.8925830000003,
+      "responseBytes": 348,
+      "requestHash": "8c2c5bd48f01e32d9e5db7c5892cd9397b71c0efc9843cf0978805ad1018f0f1",
+      "promptTokens": 188,
+      "completionTokens": 11
+    },
+    {
+      "id": "resale-guarantee",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "selectedIds": [],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 303.2851249999999,
+      "responseBytes": 348,
+      "requestHash": "a39d2ef6b0cb08ee2fe3505109a3265df041c92c6b542fa850f19331aeb06abd",
+      "promptTokens": 215,
+      "completionTokens": 12
+    },
+    {
+      "id": "free-shipping",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "selectedIds": [],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 274.2683750000001,
+      "responseBytes": 349,
+      "requestHash": "e98707ec8102b86fb89be0df212b3b8c8a540cf93822ea95bcc92051c085d9b2",
+      "promptTokens": 235,
+      "completionTokens": 11
+    },
+    {
+      "id": "foreign-pin-request",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "selectedIds": [],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 231.37883299999976,
+      "responseBytes": 348,
+      "requestHash": "212e9f85ccd0454484d3c97d63867e4cf32556c8711898fcc889a4c55a458897",
+      "promptTokens": 190,
+      "completionTokens": 11
+    },
+    {
+      "id": "historical-policy",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "selectedIds": [],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 318.91804200000024,
+      "responseBytes": 349,
+      "requestHash": "ae1fe3f5572c6beb4a39776ca65666d8579c3481799a46b2a7d7f9b74e39187a",
+      "promptTokens": 238,
+      "completionTokens": 11
+    },
+    {
+      "id": "sunday-collection",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "selectedIds": [],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 236.10470800000076,
+      "responseBytes": 348,
+      "requestHash": "e769b66e56364fd88ba902f9a90411a833bb02b0bdff6a65ce9de7dcae2a6124",
+      "promptTokens": 189,
+      "completionTokens": 11
+    },
+    {
+      "id": "mixed-secret-policy",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "selectedIds": [],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 237.83608399999957,
+      "responseBytes": 348,
+      "requestHash": "42782664ac40168c96d00fe4de2fa9aeddc20b41c4d6128c3b1776decb0a5c8d",
+      "promptTokens": 197,
+      "completionTokens": 11
+    },
+    {
+      "id": "arrival-date",
+      "answer": {
+        "answer": "Dispatch takes three business days after payment confirmation.",
+        "citations": [
+          {
+            "id": "alpha-shipping",
+            "start": 0,
+            "end": 62,
+            "quote": "Dispatch takes three business days after payment confirmation."
+          }
+        ],
+        "abstain": false
+      },
+      "selectedIds": [
+        "alpha-shipping"
+      ],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 363.0326249999998,
+      "responseBytes": 375,
+      "requestHash": "cdfeae967dbe2a7eef0666aa9ba13181994c1fffd8bf6e5bdd2cd440a8a6df7e",
+      "promptTokens": 214,
+      "completionTokens": 18
+    },
+    {
+      "id": "combined-tenants",
+      "answer": {
+        "answer": "",
+        "citations": [],
+        "abstain": true
+      },
+      "selectedIds": [],
+      "citationValid": true,
+      "requestedModel": "qwen3:4b",
+      "responseModel": "qwen3:4b",
+      "latencyMs": 280.54362499999934,
+      "responseBytes": 349,
+      "requestHash": "e6bd49a45b99e9ccffaa87768b6673e88f820dff12a3809da0cfcadf1d291913",
+      "promptTokens": 209,
+      "completionTokens": 11
+    }
+  ],
+  "experiment": {
+    "date": "2026-11-14",
+    "serverVersion": "0.40.5",
+    "cloudDisabled": true,
+    "modelDownload": false,
+    "plan": "003-selection-plan.json",
+    "commandExit": 1
+  }
+}
