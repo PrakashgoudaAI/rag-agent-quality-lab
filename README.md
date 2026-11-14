@@ -32,6 +32,20 @@ The command never downloads a model. It allows a loopback HTTP origin, refuses r
 
 The output is `reports/model-evaluation.json`; any failed case makes the command exit 1. The scorer uses the same reference labels as the deterministic baseline. Exact extraction results should not be presented as general language-model accuracy.
 
+## Evidence selection candidate
+
+A separate candidate asks the model for supporting document IDs, then constructs quotes and offsets from canonical text in code. Its curated glossary and weighted lexical ranking improve the known paraphrase retrieval case. The same evaluator remains in use; original labels and baselines are unchanged.
+
+One frozen run passed 22/23 development cases and 14/16 author-created extension cases. Both full quality gates failed. Unsupported detail, a lexical miss and a dispatch/arrival confusion remain documented. These small, visible datasets do not establish general accuracy or independent readiness.
+
+```sh
+LOCAL_MODEL=qwen3:4b npm run evaluate:selection
+LOCAL_MODEL=qwen3:4b npm run evaluate:extension
+npm run audit:candidate
+```
+
+The audit recomputes saved experiment outcomes without calling a model. CI publishes those archived results alongside the original baseline and rejects inconsistent counts or fixture hashes. See [the selection design](docs/decisions/003-evidence-selection.md) and [full comparison](docs/experiments/README.md#evidence-selection-candidate).
+
 ## MCP write boundaries
 
 The official MCP client/server SDK performs discovery and calls over paired in-memory transports. A fixed host identity, strict argument schema, editor role and host approval are required for `create_note`. Tool arguments cannot override the tenant. Identical key/payload requests replay one record; changed intent conflicts.
