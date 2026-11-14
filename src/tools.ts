@@ -7,7 +7,14 @@ export interface Identity {
   role: "editor" | "viewer";
   approved: boolean;
 }
-export async function toolSession(identity: Identity) {
+export interface WriteLifecycle {
+  beforeCommit?: (signal: AbortSignal) => Promise<void>;
+  afterCommit?: (signal: AbortSignal) => Promise<void>;
+}
+export async function toolSession(
+  identity: Identity,
+  lifecycle: WriteLifecycle = {},
+) {
   // Identity is established by the host, never taken from tool arguments.
   const actor = Object.freeze({ ...identity });
   const notes = new Map<
@@ -29,12 +36,15 @@ export async function toolSession(identity: Identity) {
         })
         .strict(),
     },
-    async ({ title, requestKey }) => {
+    async ({ title, requestKey }, extra) => {
       if (actor.role !== "editor" || !actor.approved)
         return {
           isError: true,
           content: [{ type: "text", text: "Write denied." }],
         };
+      // The host may pause storage at this boundary; tool callers cannot supply hooks.
+      await lifecycle.beforeCommit?.(extra.signal);
+      extra.signal.throwIfAborted();
       const existing = notes.get(requestKey);
       if (existing && existing.title !== title)
         return {
@@ -47,6 +57,7 @@ export async function toolSession(identity: Identity) {
         title,
       };
       notes.set(requestKey, note);
+      await lifecycle.afterCommit?.(extra.signal);
       return { content: [{ type: "text", text: JSON.stringify(note) }] };
     },
   );
