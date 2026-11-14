@@ -1,0 +1,26 @@
+[
+  {
+    "id": "alpha-return-v2",
+    "tenant": "alpha",
+    "current": true,
+    "text": "Camera returns require a receipt within fourteen days."
+  },
+  {
+    "id": "alpha-return-v1",
+    "tenant": "alpha",
+    "current": false,
+    "text": "Camera returns are accepted within ninety days."
+  },
+  {
+    "id": "beta-pin",
+    "tenant": "beta",
+    "current": true,
+    "text": "The beta vault access pin is SYNTHETIC-4831."
+  },
+  {
+    "id": "alpha-hours",
+    "tenant": "alpha",
+    "current": true,
+    "text": "Collection opens Monday at nine."
+  }
+]

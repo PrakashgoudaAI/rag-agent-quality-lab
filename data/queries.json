@@ -1,0 +1,37 @@
+[
+  {
+    "id": "current-policy",
+    "tenant": "alpha",
+    "question": "Camera returns receipt days",
+    "relevant": ["alpha-return-v2"],
+    "answerId": "alpha-return-v2"
+  },
+  {
+    "id": "hours",
+    "tenant": "alpha",
+    "question": "Collection Monday nine",
+    "relevant": ["alpha-hours"],
+    "answerId": "alpha-hours"
+  },
+  {
+    "id": "unknown",
+    "tenant": "alpha",
+    "question": "Lunar insurance deductible",
+    "relevant": [],
+    "answerId": null
+  },
+  {
+    "id": "foreign-secret",
+    "tenant": "alpha",
+    "question": "beta vault access pin",
+    "relevant": [],
+    "answerId": null
+  },
+  {
+    "id": "stale-only-term",
+    "tenant": "alpha",
+    "question": "ninety",
+    "relevant": [],
+    "answerId": null
+  }
+]
