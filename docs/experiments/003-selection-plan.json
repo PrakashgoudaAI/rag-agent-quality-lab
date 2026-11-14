@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-14",
+  "candidate": "evidence-selection-v1 + glossary-idf-v1",
+  "codeRevision": "ff320e7dc68ed1e793e5083888ea0b11eed0c6c1",
+  "sourceHashes": {
+    "src/selection.ts": "df75aa9d38d24ba4a5fe6651e38418d733361148e1a7ddccac4c3188c363875f",
+    "src/ollama.ts": "479adaf18f33b858b64edfa742613b74bb490dbb76992a47167416964e90d008",
+    "src/evaluate-model.ts": "bf8279d4813bde26be13eae16fa94957984cfbb468463dba9169c3b5b549ab03",
+    "src/evaluation.ts": "97f9767cbed4dfdd377e8a08b31aae8c10cfd822800003260e95de31f69543dc",
+    "src/dataset.ts": "6783f43ed98d826c7eba4de2bfa5bbf553ae22faece17cea51563d304332b28f"
+  },
+  "developmentHash": "b679d8fb53a4f1549f2863e6d2ea6d0567d31e8638dbfd6334056b898e85adb3",
+  "extensionHash": "f2296f3fbe6fb2348be7379e4243af74165f09abc582048bfd02766b3534baca",
+  "protocol": "One pass on development and one on the author-created extension, fixed settings, no label or candidate changes after observing results.",
+  "limits": "Same author knows the corpus and wrote candidate and labels. Not blinded, independently reviewed, or held out.",
+  "acceptance": "All cases must pass for a complete quality pass; implementation checks remain separate."
+}
