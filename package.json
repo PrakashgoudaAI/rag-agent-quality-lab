@@ -1,0 +1,35 @@
+{
+  "name": "rag-agent-quality-lab",
+  "version": "0.1.0",
+  "description": "Synthetic retrieval evidence and bounded MCP tool execution checks.",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
+    "evaluate": "node src/evaluate.ts",
+    "verify": "npm run check && npm run lint && npm run format:check && npm test && npm run evaluate",
+    "lint": "eslint .",
+    "format": "prettier --write src tests data tsconfig.json eslint.config.mjs",
+    "format:check": "prettier --check src tests data tsconfig.json eslint.config.mjs"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "eslint": "10.14.0",
+    "prettier": "3.9.10",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.72.1"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "overrides": {
+    "minimatch": "11.0.1"
+  }
+}
