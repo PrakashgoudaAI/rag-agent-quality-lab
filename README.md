@@ -66,4 +66,4 @@ Source and original synthetic fixtures are MIT licensed. Dependencies retain the
 
 ## Review the evidence
 
-The optional selection candidate scored 22/23 on development cases and 14/16 on the later author-written extension. Both complete quality gates failed. The extension was created after the candidate was frozen; it is not an independently reviewed held-out benchmark. See the [evaluation and cancellation walkthrough](docs/walkthrough.md) and [archived experiment records](docs/experiments/).
+Start with the [evaluation and cancellation walkthrough](docs/walkthrough.md), then inspect the [archived experiment records](docs/experiments/). The later extension was authored after the candidate was frozen; it is not an independently reviewed held-out benchmark.
